@@ -1,0 +1,1 @@
+Place the software installers that you downloaded from KP FTP in this directory.  The vagrant install scripts will do the rest.
