@@ -123,7 +123,7 @@ All oracle drivers are backwards compatible with the officially supported databa
 
 **IMPORTANT:** Move everything you downloaded to the `${ATG-CRS}/software` directory at the top level of this project.
 
-## create the "atg" vm
+## Create the "atg" vm
 
 `$ vagrant up atg`
 
@@ -234,7 +234,7 @@ You can skip the "Reducing Logging Messages" and "Additional Application Server 
 
 ## Gotchas
 
-There are a couple of settings that are absolutely critical to getting this cluster running, but which aren't obvious and are difficult to diagnose if things go wrong:
+There are a couple of settings that are absolutely critical to getting this cluster running, but which aren't obvious and are difficult to diagnose if things go wrong.  Don't worry, both of these should be taken care of automatically in the scripts.
 
 - You must have -Duser.timezone=UTC in your JAVA_OPTS variable that's used to run jboss and cim.  For some reason it's required when connecting from the atg vm to the db vm.  If you don't have this you'll get user timezone errors and ultimately can't use jdbc to connect to your database.
 - You must use the jps-config.xml file that comes with the ToolsAndFrameworks' deployment template: `/usr/local/endeca/ToolsAndFrameworks/11.1.0/deployment_template/lib/../../server/workspace/credential_store/jps-config.xml`  If you're not sure if you set it right when configuring your application in cim, check in the file `/usr/local/endeca/Apps/CRS/config/script/WorkbenchConfig.xml`.  If you don't use the correct jps-config.xml, you'll get a variety of strange and unhelpful errors, like a ClassNotFoundException when removing your application with `runcommand.sh`
