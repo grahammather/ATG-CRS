@@ -12,12 +12,16 @@ source /usr/local/endeca/PlatformServices/workspace/setup/installer_sh.ini
 export ENDECA_TOOLS_ROOT=/usr/local/endeca/ToolsAndFrameworks/11.1.0
 export ENDECA_TOOLS_CONF=/usr/local/endeca/ToolsAndFrameworks/11.1.0/server/workspace
 
-/vagrant/software/cd/Disk1/install/silent_install.sh /vagrant/scripts/atg/endeca_toolsandframeworks_silent_response.rsp ToolsAndFrameworks /usr/local/endeca/ToolsAndFrameworks admin
+unzip -n /vagrant/software/V46398-01.zip -d /vagrant/software
+
+/vagrant/software/cd/Disk1/install/silent_install.sh /vagrant/scripts/atg/endeca_toolsandframeworks_silent_response.rsp \
+	ToolsAndFrameworks /usr/local/endeca/ToolsAndFrameworks admin
 
 sudo /home/vagrant/oraInventory/orainstRoot.sh
 
 # CAS
 /vagrant/software/OCcas11.1.0-Linux64.sh --silent --target /usr/local < /vagrant/scripts/atg/endeca_cas_silent.txt
 
-
-
+# setup bash profile
+echo "source /usr/local/endeca/MDEX/6.5.1/mdex_setup_sh.ini" >> /home/vagrant/.bash_profile \
+ && echo "source /usr/local/endeca/PlatformServices/workspace/setup/installer_sh.ini" >> /home/vagrant/.bash_profile
